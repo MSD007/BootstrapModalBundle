@@ -1,8 +1,10 @@
-// const $ = require('jquery');
+import $ from 'jquery';
+import 'bootstrap';
+
 /**
  * Todo Need create a minified version of class to use as script - (minified version will replace old function)
  */
-class SideclickModal {
+export default class SideclickModal {
     constructor() {
 
         this.$body = $('body');
@@ -455,26 +457,21 @@ class SideclickModal {
                     self.postPopulateModal();
                 }
 
-            })
-                .fail(function(xhr, textStatus) {
+            }).fail(function(xhr, textStatus) {
 
-                    if (xhr.status == '403') {
+                if (xhr.status == '403') {
 
-                        // Get rid of the hash - since the modal will still
-                        // be there and will then auto launch after the redirect
-                        // @todo What we really want to do here is just remove the modal
-                        // value but this is quicker for now, since we dont use the hash for
-                        // anything else yet
-                        // window.location.hash = '';
-                        self.createHashUrl();
-                        window.location.reload();
-                    }
-                });
-
+                    // Get rid of the hash - since the modal will still
+                    // be there and will then auto launch after the redirect
+                    // @todo What we really want to do here is just remove the modal
+                    // value but this is quicker for now, since we dont use the hash for
+                    // anything else yet
+                    // window.location.hash = '';
+                    self.createHashUrl();
+                    window.location.reload();
+                }
+            });
         }
     }
-
 }
-
-export default SideclickModal;
 
